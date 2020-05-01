@@ -1,18 +1,25 @@
 package com.zsmart.parascolaire.bean;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Mondat implements Serializable{
-	
+public class Mandat implements Serializable{
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private Date dateDebut;
 	private Date dateFin;
+	@ManyToOne
 	private Club club;
+	@ManyToOne
 	private Responsabilite responsabilite;
+	@ManyToOne
 	private Utilisateur utilisateur;
 	
 	public Long getId() {
@@ -51,11 +58,11 @@ public class Mondat implements Serializable{
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
-	public Mondat() {
+	public Mandat() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Mondat(Long id, Date dateDebut, Date dateFin, Club club, Responsabilite responsabilite,
+	public Mandat(Long id, Date dateDebut, Date dateFin, Club club, Responsabilite responsabilite,
 			Utilisateur utilisateur) {
 		super();
 		this.id = id;
@@ -85,7 +92,7 @@ public class Mondat implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Mondat other = (Mondat) obj;
+		Mandat other = (Mandat) obj;
 		if (club == null) {
 			if (other.club != null)
 				return false;

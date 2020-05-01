@@ -1,19 +1,24 @@
 package com.zsmart.parascolaire.bean;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Evenement implements Serializable {
-	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String description;
 	private Date dateDebut;
 	private Date dateFin;
 	private Double budgetCollecte;
 	private Double budgetConsomme;
+	@ManyToOne
 	private Club club;
 	
 	public Long getId() {

@@ -3,9 +3,13 @@ package com.zsmart.parascolaire.bean;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Utilisateur implements Serializable {
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String nom;
 	private String prenom;
